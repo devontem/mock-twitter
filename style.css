@@ -1,0 +1,87 @@
+body{
+	margin:0px;
+	padding:0px;
+	background:#2D3E50;
+	font-family: Calibri;
+}
+.main{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.logo a{
+	color: #673AB7!important;
+    font-weight: bold;
+    font-size: 55px;
+}
+.logo a:hover{
+	color: #856EAF!important;
+}
+.userInfo{
+	background: #BEC3C7;
+	text-align: center;
+	padding-bottom: 20px;
+}
+.tweets{
+	background: #ECF0F1;
+	min-height: 350px;
+}
+.tweetUser{
+	font-weight: bold;
+	font-size: 20px;
+}
+.tweetMessage{
+	padding-left: 15px;
+}
+.time{
+	text-align: right;
+	color: #9E9E9E;
+}
+.streamList p {
+    margin-bottom: 5px;
+}
+.streamList.userSpecific{
+	/*display: none;*/
+}
+textarea{
+	width:100%;
+	max-width: 100%;
+	display:block;
+	height: 70px;
+	max-height: 70px;
+	font-size: 20px;
+	padding: 5px;
+}
+button{
+	margin: 10px 0px;
+}
+button[type="submit"]{
+	float: right;
+}
+ul{
+	padding:0px;
+}
+li{
+	list-style-type: none;
+	font-size: 20px;
+}
+a{
+	color: #C1392B;
+	text-decoration: none;
+}
+a:hover{
+	color: #E84C3D;
+	text-decoration: none;
+}
+.streamList{
+	background: white;
+	border-radius: 3px;
+}
+.streamList li{
+	min-height: 50px;
+    background: white;
+    text-decoration: none;
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 10px;
+  	font-size: 16px;
+}

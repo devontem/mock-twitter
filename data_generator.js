@@ -16,9 +16,26 @@ window.users = Object.keys(streams.users);
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
   var username = newTweet.user;
-  streams.users[username].push(newTweet);
+
+  // 'registered' users have their tweet archived to their stream
+  if (streams.users[username]){ 
+    streams.users[username].push(newTweet); 
+  }
+
   streams.home.push(newTweet);
+
+  // adds visitor tweet to DOM immediately
+  if (newTweet.user == 'visitor'){
+    addToDOM(newTweet);
+  }
 };
+
+// adding new tweet to DOM
+var addToDOM = function(tweet){
+  var $time = jQuery.timeago(tweet.created_at);
+  var $tweet = $('<li><p class="tweetUser">@<a class="user" href="#">'+tweet.user+'</a>:</p><p class="tweetMessage">'+ tweet.message +'</p><p class="time">'+ $time +'</p></li>');
+  $('.streamList.all').prepend($tweet)
+}
 
 // utility function
 var randomElement = function(array){
@@ -58,6 +75,7 @@ scheduleNextTweet();
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
+var visitor = 'visitor';
 var writeTweet = function(message){
   if(!visitor){
     throw new Error('set the global visitor property!');
@@ -65,5 +83,19 @@ var writeTweet = function(message){
   var tweet = {};
   tweet.user = visitor;
   tweet.message = message;
+  tweet.created_at = new Date();
+
   addTweet(tweet);
 };
+
+// letting a user submit a tweet
+var $submit = $('button[type="submit"]');
+var $textarea = $('textarea');
+$submit.on('click', function(){
+
+  var $message =  $textarea.val();
+  $textarea.val('');
+
+  writeTweet($message);
+  
+});
